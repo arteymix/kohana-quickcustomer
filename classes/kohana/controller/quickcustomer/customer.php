@@ -1,6 +1,6 @@
 <?php
 
-class Kohana_Controller_QuickCustomer extends Controller_Template {
+class Kohana_Controller_QuickCustomer_Client extends Controller_Template {
 
     const TPS = 1.075, TVQ = 1.095;
 
@@ -22,19 +22,7 @@ class Kohana_Controller_QuickCustomer extends Controller_Template {
         parent::after();
     }
 
-    /**
-     * Connecte l'utilisateur
-     */
-    public function action_login() {
-        
-    }
-
-    /**
-     * Déconnecte l'utilisateur
-     */
-    public function action_logout() {
-        
-    }
+   
 
     /**
      * Administrer Quickcustomer.
