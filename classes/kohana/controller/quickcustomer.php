@@ -15,26 +15,31 @@ class Kohana_Controller_QuickCustomer extends Controller_Template {
 
         $this->utilisateur = Auth::instance()->get_user();
     }
-    
+
     public function after() {
         $this->content->utilisateur = $this->utilisateur;
 
         parent::after();
     }
 
+    /**
+     * Connecte l'utilisateur
+     */
     public function action_login() {
         
     }
 
+    /**
+     * Déconnecte l'utilisateur
+     */
     public function action_logout() {
         
     }
-    
+
     /**
-     * Créer un événement
+     * Administrer Quickcustomer.
      */
-    public function action_creer() {
-        
+    public function action_admin() {
         
     }
 
@@ -65,7 +70,7 @@ class Kohana_Controller_QuickCustomer extends Controller_Template {
     }
 
     /**
-     * Affiche les éléments que l'utilisateur peut commander
+     * Altérer la commande de l'utilisateur
      */
     public function action_commande() {
         $this->content = new View("utilisateur/commande");
@@ -109,8 +114,6 @@ class Kohana_Controller_QuickCustomer extends Controller_Template {
 
         var_dump($response);
     }
-
-    
 
 }
 
