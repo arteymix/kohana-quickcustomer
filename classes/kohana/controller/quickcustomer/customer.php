@@ -1,47 +1,42 @@
 <?php
 
-class Kohana_Controller_QuickCustomer_Client extends Controller_Template {
+class Kohana_Controller_QuickCustomer_Client extends Controller_QuickCustomer {
 
     const TPS = 1.075, TVQ = 1.095;
 
     public $title = "Mon compte";
-    private $utilisateur;
 
     public function before() {
+
         parent::before();
+
         if (!Auth::instance()->logged_in()) {
             throw new HTTP_Exception_401("You have to be logged to access this page.");
         }
 
-        $this->utilisateur = Auth::instance()->get_user();
-    }
-
-    public function after() {
-        $this->content->utilisateur = $this->utilisateur;
-
-        parent::after();
-    }
-
-   
-
-    /**
-     * Administrer Quickcustomer.
-     */
-    public function action_admin() {
-        
+        if (!Auth::instance()->get_user()->event->loaded()) {
+            throw new HTTP_Exception_401("You are not part of an event, therefore you may not order anything.");
+        }
     }
 
     /**
      * Altérer la commande de l'utilisateur
      */
-    public function action_commande() {
+    public function action_index() {
         $this->content = new View("utilisateur/commande");
+    }
+
+    /**
+     * Add a single product to the order (not templated).
+     */
+    public function action_add() {
+        
     }
 
     /**
      * Effectue la commande en cours.
      */
-    public function action_commander() {
+    public function action_order() {
 
         $this->content = new View("utilisateur/commander");
 
