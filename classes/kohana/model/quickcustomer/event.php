@@ -9,7 +9,7 @@ class Kohana_Model_QuickCustomer_Event extends ORM {
         // Users in the event
         'users' => array(),
         // Products allowed by the event
-        'produits' => array(),
+        'products' => array(),
         // Specs allowed by the event
         'specifications' => array(),
     );

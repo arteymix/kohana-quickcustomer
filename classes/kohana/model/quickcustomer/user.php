@@ -12,7 +12,7 @@ class Model_QuickCustomer_User extends Model_Auth_User {
         "orders" => array(),
     );
     protected $_belongs_to = array(
-        "evenement" => array(),
+        "event" => array(),
         // Offre en cours
         "order" => array(),
     );
